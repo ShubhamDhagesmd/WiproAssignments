@@ -1,0 +1,26 @@
+//Assignment_14
+//Write a script that reads numbers from the user until they enter '0'. The script should also print whether each number is odd or even.
+
+Bash Script:
+
+#!/bin/bash
+
+while true; do
+    read -p "Enter a number (0 to stop): " number
+    if [ "$number" -eq 0 ]; then
+        break
+    fi
+
+    if [ $((number % 2)) -eq 0 ]; then
+        echo "$number is even"
+    else
+        echo "$number is odd"
+    fi
+done
+
+Explanation of Bash Script:
+
+1The 'read' command takes input from the user.
+2 '-eq' checks for numerical equality.
+3 '$((expression))' evaluates arithmetic expressions.
+4 '%' is used for the modulus operation to determine if a number is even or odd.

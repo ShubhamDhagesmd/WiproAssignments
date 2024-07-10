@@ -1,0 +1,64 @@
+//Assignment_12
+//Feature Branches and Hotfixes Create a 'hotfix' branch to fix an issue in the main code. Merge the 'htfix' branch into 'main' ensuring that the issue is resolved.
+
+Step-by-Step Instructions:
+
+Create and Switch to hotfix Branch:
+
+
+git checkout -b hotfix
+
+Make the Hotfix:
+
+Edit the necessary files to fix the issue. For example:
+
+echo "Hotfix applied" > fixedfile.txt
+
+Stage the Changes:
+
+git add fixedfile.txt
+Commit the Changes:
+
+git commit -m "Fix issue in main code"
+Switch Back to main Branch:
+
+git checkout main
+Merge hotfix Branch into main:
+
+git merge hotfix
+Verify the Fix:
+Check that the fix is successfully merged. For example, if you created fixedfile.txt, verify its content:
+
+cat fixedfile.txt
+(Optional) Delete the hotfix Branch:
+After verifying the fix, you can delete the hotfix branch:
+
+git branch -d hotfix
+Example Commands Summary:
+
+git checkout -b hotfix
+echo "Hotfix applied" > fixedfile.txt
+git add fixedfile.txt
+git commit -m "Fix issue in main code"
+git checkout main
+git merge hotfix
+cat fixedfile.txt
+git branch -d hotfix
+
+Explanation:
+
+git checkout -b hotfix: Creates and switches to the hotfix branch.
+echo "Hotfix applied" > fixedfile.txt: Simulates fixing an issue by editing a file.
+git add fixedfile.txt: Stages the changes.
+git commit -m "Fix issue in main code": Commits the changes with a message.
+git checkout main: Switches back to the main branch.
+git merge hotfix: Merges the hotfix branch into main.
+cat fixedfile.txt: Verifies that the fix is present in the main branch.
+git branch -d hotfix: Deletes the hotfix branch.
+Additional Tips:
+Conflict Resolution: If there are conflicts during the merge, Git will prompt you to resolve them. You can do so by manually editing the conflicting files and then committing the resolved changes.
+
+git add conflictingfile.txt
+git commit -m "Resolve merge conflicts"
+
+Testing: Always ensure to test your hotfix in the main branch to confirm that it resolves the issue without introducing new problems.

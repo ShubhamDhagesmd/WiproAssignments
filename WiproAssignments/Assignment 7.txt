@@ -1,0 +1,71 @@
+Assignment 7: Create a script that takes a text file and replaces all occurrences of "old_text" with "new_text". Use sed to perform this operation and output the result to a new file.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Bash Script-------------------:)
+
+#!/bin/bash
+
+# Function to replace old_text with new_text using sed
+replace_text() {
+    local input_file="$1"
+    local output_file="$2"
+    local old_text="$3"
+    local new_text="$4"
+
+    sed "s/$old_text/$new_text/g" "$input_file" > "$output_file"
+}
+
+# Check if the correct number of arguments are provided
+if [ "$#" -ne 4 ]; then
+    echo "Usage: $0 <input_file> <output_file> <old_text> <new_text>"
+    exit 1
+fi
+
+input_file="$1"
+output_file="$2"
+old_text="$3"
+new_text="$4"
+
+# Check if the input file exists
+if [ ! -f "$input_file" ]; then
+    echo "Error: Input file '$input_file' not found."
+    exit 1
+fi
+
+# Replace old_text with new_text in input_file and output to output_file
+replace_text "$input_file" "$output_file" "$old_text" "$new_text"
+
+echo "Replacement completed. Output written to '$output_file'."
+
+
+Explanation-----------------:)
+
+**Function replace_text():
+	*This function takes four arguments: input_file, output_file, old_text, and new_text.
+	*It uses sed to replace all occurrences of old_text with new_text in input_file.
+	*The output is redirected to output_file.
+
+**Error Checking:
+	*The script checks if the correct number of arguments (four) are provided.
+	*It checks if the input_file exists before performing any operations.
+
+**Usage:
+	*The script expects the following command line arguments:
+		./script.sh <input_file> <output_file> <old_text> <new_text>
+	*<input_file>: The path to the text file where replacement will occur.
+	*<output_file>: The path to the new file where the result will be saved.
+	*<old_text>: The text to be replaced.
+	*<new_text>: The text to replace <old_text> with.
+
+**Example:
+
+	*Suppose if we have a file input.txt with the following content:
+		This is old_text and another old_text.
+		Here is another line with old_text.
+
+	*Running the script with the following command:
+		./script.sh input.txt output.txt old_text new_text
+
+	*Will produce a new file output.txt with the following content:
+		This is new_text and another new_text.
+		Here is another line with new_text.

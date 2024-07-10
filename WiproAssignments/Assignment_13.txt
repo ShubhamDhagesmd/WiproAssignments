@@ -1,0 +1,18 @@
+//Assignment_13
+//Ensure the script checks if a specific file(example myfile.txt) exists in the current directory . if it exists, print "File exists", otherwise print "File not found".
+
+Bash Sciprt:
+
+#!/bin/bash
+
+if [ -f "myfile.txt" ]; then
+  echo "File exists"
+else
+  echo "File not found"
+fi
+
+Detailed Explanation:
+Bash (-f flag):
+
+-f checks if the specified file exists and is a regular file.
+echo outputs the message to the terminal.

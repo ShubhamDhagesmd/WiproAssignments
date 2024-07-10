@@ -1,0 +1,41 @@
+Assignment 3: " Create a function that takes a filename as an argument and prints the number of lines in the file. Call this function from your script with different filenames."
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Bash Script-----------:)
+
+#!/bin/bash
+
+# Function to count lines in a file
+count_lines() {
+    local filename="$1"
+    if [ -f "$filename" ]; then
+        local num_lines=$(wc -l < "$filename")
+        echo "Number of lines in $filename: $num_lines"
+    else
+        echo "Error: $filename is not a valid file."
+    fi
+}
+
+# Call the function with different filenames
+count_lines "file1.txt"
+count_lines "file2.txt"
+count_lines "file3.txt"
+
+
+Explanation----------------:)
+
+**Function Definition (count_lines):
+	*count_lines() is a Bash function that takes a filename as an argument.
+	*It first checks if the provided filename exists and is a regular file (-f "$filename").
+	*If the file exists, it uses wc -l < "$filename" to count the number of lines in the file.
+	*It then prints the number of lines in the file using echo.
+
+**Calling the Function:
+	*The function count_lines is called with three different filenames: "file1.txt", "file2.txt", and "file3.txt".
+	*Replace these filenames with actual filenames that you want to test.
+
+Example Output------------:)
+
+Number of lines in file1.txt: 10
+Number of lines in file2.txt: 15
+Error: file3.txt is not a valid file.

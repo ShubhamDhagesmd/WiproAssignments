@@ -1,0 +1,86 @@
+Assignment 5: "Modify the script to handle errors, such as the directory already existing or lacking permissions to create files."
+			"Add a debugging mode that prints additional information when enabled."
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Bash Script--------------)
+
+#!/bin/bash
+
+# Debug mode
+DEBUG=false
+
+# Function to print debug messages
+debug_msg() {
+    if [ "$DEBUG" = true ]; then
+        echo "[DEBUG] $1"
+    fi
+}
+
+# Create the directory TestDir if it doesn't exist
+if ! mkdir -p TestDir; then
+    echo "Error: Directory 'TestDir' creation failed or already exists."
+    exit 1
+fi
+
+debug_msg "Created directory 'TestDir' successfully."
+
+# Loop to create ten files
+for (( i=1; i<=10; i++ )); do
+    filename="File$i.txt"
+    filepath="TestDir/$filename"
+    
+    # Attempt to create the file
+    if ! echo "$filename" > "$filepath"; then
+        echo "Error: Unable to create file '$filepath'. Check permissions."
+        exit 1
+    fi
+    
+    debug_msg "Created file '$filepath'."
+done
+
+echo "Files created successfully."
+
+
+
+Explanation---------------:)
+
+**Debug Mode and Debug Messages:
+	*Introduced a DEBUG variable which controls whether debug messages are printed (DEBUG=true to enable debug mode).
+	*Added a debug_msg function to print debug messages prefixed with [DEBUG].
+
+**Error Handling:
+	*Added error handling for the directory creation and file writing operations using if ! command; then ... fi structure.
+	*If any operation fails, an appropriate error message is displayed, and the script exits with a status code of 1.
+
+**Main Script Flow:
+	*Creating the Directory: Checks if TestDir exists or is successfully created. If not, it prints an error and exits.
+	*Loop to Create Files: Attempts to create each file (File1.txt to File10.txt). If any file creation fails, an error is printed and the script exits.
+	*Debug Messages: Include debug messages for each operation if debug mode is enabled.
+
+
+Example output---------------:)
+
+>>Normal Output:
+Files created successfully.
+
+
+>>Debug Mode Output:
+To enable debug mode, set DEBUG=true at the top of the script.
+
+
+[DEBUG] Created directory 'TestDir' successfully.
+[DEBUG] Created file 'TestDir/File1.txt'.
+[DEBUG] Created file 'TestDir/File2.txt'.
+[DEBUG] Created file 'TestDir/File3.txt'.
+[DEBUG] Created file 'TestDir/File4.txt'.
+[DEBUG] Created file 'TestDir/File5.txt'.
+[DEBUG] Created file 'TestDir/File6.txt'.
+[DEBUG] Created file 'TestDir/File7.txt'.
+[DEBUG] Created file 'TestDir/File8.txt'.
+[DEBUG] Created file 'TestDir/File9.txt'.
+[DEBUG] Created file 'TestDir/File10.txt'.
+
+
+>>Error Output (Permission Denied):
+Error: Unable to create file 'TestDir/File1.txt'. Check permissions.
+

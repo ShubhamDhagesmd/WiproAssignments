@@ -1,0 +1,66 @@
+Assignment 6: Given a sample log file, write a script using grep to extract all lines containing "ERROR". Use awk to print the date, time, and error message of each extracted line.
+Data Processing with sed
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Bash Script--------------:)
+
+#!/bin/bash
+
+# Input log file
+logfile="sample.log"
+
+# Check if the log file exists
+if [ ! -f "$logfile" ]; then
+    echo "Error: Log file '$logfile' not found."
+    exit 1
+fi
+
+# Use grep to filter lines containing "ERROR", then use awk to extract date, time, and error message
+grep "ERROR" "$logfile" | awk '{
+    # Extract date and time (assuming format like "Jun 18 2024 12:34:56")
+    datetime = $1 " " $2 " " $3 " " $4
+
+    # Join remaining fields to get the error message
+    $1 = $2 = $3 = $4 = "" # Clear the date, time fields
+    gsub(/^ +/, "", $0) # Remove leading spaces
+    errmsg = $0
+
+    # Print date, time, and error message
+    printf("%s %s\n", datetime, errmsg)
+}'
+
+
+Explanation-----------------:)
+
+**Input Log File:
+	*logfile="sample.log": Specifies the name of the log file. Adjust this to match your actual log file name.
+
+**Error Checking:
+	*Checks if the log file exists (if [ ! -f "$logfile" ]), and if not, prints an error message and exits.
+
+**Data Extraction Using grep and awk:
+	*grep "ERROR" "$logfile": Filters lines containing "ERROR" from the log file.
+	*awk '{ ... }': Processes each line using AWK.
+
+**AWK Processing:
+	*datetime = $1 " " $2 " " $3 " " $4: Concatenates the first four fields ($1, $2, $3, $4) to form the datetime string.
+	*$1 = $2 = $3 = $4 = "": Clears the first four fields.
+	*gsub(/^ +/, "", $0): Removes leading spaces from the remaining fields ($0).
+	*errmsg = $0: Stores the remaining fields as the error message.
+	*printf("%s %s\n", datetime, errmsg): Prints the datetime and error message.
+
+
+Example output-------------:)
+
+Assume sample.log contains the following content:
+Jun 18 2024 12:34:56 ERROR: Disk full
+Jun 18 2024 12:35:01 INFO: Application started
+Jun 18 2024 12:35:10 ERROR: Database connection failed
+
+
+Running the script will produce the output:
+Jun 18 2024 12:34:56 ERROR: Disk full
+Jun 18 2024 12:35:10 ERROR: Database connection failed
+
+
+

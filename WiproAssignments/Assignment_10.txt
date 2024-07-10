@@ -1,0 +1,35 @@
+//Assignment 1
+//Initialize a new Git repository in a directory of your choice. Add a simple text file to the repository and make the first commit.
+
+Step-by-Step Process:
+
+Installation of Git:
+
+ 
+Open your terminal (or Git Bash on Windows).
+
+sudo apt update and upgrade -y
+sudo apt install git -y
+git --version # To check version of git
+
+Creating Directory:
+
+mkdir /home/git	#creating a directory to initialize git, create it where ever you want
+
+Navigate to your repository:
+
+cd /home/git	#getting into the directory
+
+Initialization of git:
+
+git init # It initialize the git in the respected directory
+ls -a # if you see .git file then it successfully initialized the git in the respected directory
+
+touch first_file.txt #creating a empty file
+vi first_file.txt # add some text to the file in vim editor and save it.
+
+
+git add first_file.txt #It adds the file to staging area
+
+git commit -m "Its first file" # committing the file
+

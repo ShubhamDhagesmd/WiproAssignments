@@ -1,0 +1,42 @@
+Assignment 4: "Write a script that creates a directory named TestDir and inside it, creates ten files named File1.txt, File2.txt, ... File10.txt. Each file should contain its filename as its content (e.g.. File1.txt contains "File1.txt")."
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Bash Script----------:)
+
+#!/bin/bash
+
+# Create the directory TestDir
+mkdir -p TestDir
+
+# Loop to create ten files
+for (( i=1; i<=10; i++ )); do
+    filename="File$i.txt"
+    filepath="TestDir/$filename"
+    echo "$filename" > "$filepath"
+    echo "Created $filepath"
+done
+
+Explanation----------:)
+
+**Creating the Directory:
+	*mkdir -p TestDir: Creates the directory TestDir if it doesn't already exist. The -p flag ensures that no error is thrown if the directory already exists.
+
+**Loop to Create Files:
+	*for (( i=1; i<=10; i++ )): Loops from 1 to 10 to create ten files.
+	*filename="File$i.txt": Constructs the filename (File1.txt, File2.txt, ... File10.txt) for each iteration.
+	*filepath="TestDir/$filename": Constructs the full path of the file within the TestDir directory.
+	*echo "$filename" > "$filepath": Writes the filename (e.g., File1.txt) to the file specified by filepath.
+	*echo "Created $filepath": Prints a message indicating that the file has been created.
+
+Example Output----------:)
+
+Created TestDir/File1.txt
+Created TestDir/File2.txt
+Created TestDir/File3.txt
+Created TestDir/File4.txt
+Created TestDir/File5.txt
+Created TestDir/File6.txt
+Created TestDir/File7.txt
+Created TestDir/File8.txt
+Created TestDir/File9.txt
+Created TestDir/File10.txt

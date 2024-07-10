@@ -1,0 +1,50 @@
+//Assignment_11
+//Branch creation and switching , create a new branch named 'feature' and switch to it. Make changes in the 'feature' branch and commit them.
+
+Step-by-Step Process:
+Open your terminal (or Git Bash on Windows).
+
+Navigate to your repository:
+
+cd /home/git
+
+Create a new branch named feature:
+
+git branch feature
+
+Switch to the new branch:
+
+git checkout feature
+
+git checkout -b feature #Alternatively command to switch to feature branch
+
+Make changes in your working directory. For example, create or modify a file:
+
+echo "Elite training through RPS platform" > newfile.txt
+
+Stage the changes:
+
+
+git add newfile.txt
+
+git add . #Alternative staging command
+
+Commit the changes:
+
+
+git commit -m "Adding new file "
+
+Example Commands Summary:
+
+cd /home/git
+git checkout -b feature
+echo "Elite training through RPS platform" > newfile.txt
+git add newfile.txt
+git commit -m "Add new file with initial content"
+
+Explanation:
+cd /home/git: Navigates to your repository directory.
+git checkout -b feature: Creates a new branch named feature and switches to it.
+echo "Elite training through RPS platform" > newfile.txt: Creates a new file newfile.txt and adds some text to it.
+git add newfile.txt: Stages the new file for the commit.
+git commit -m "Adding  new file": Commits the changes with the message.

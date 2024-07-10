@@ -1,0 +1,77 @@
+//Assignment_1
+//Draw your Home Network Topology and explain how you are accessing the RPS Lab environment.
+
+Graphical representation of accessing the RPS lab environment:
+
+                             +--------------+
+                             |   Client     |
+                             |   Device     |
+                             +--------------+
+                                    |
+                                    |
+                          DNS Resolution (1)
+                                    |
+                                    v
+                             +--------------+
+                             |   DNS        |
+                             |  Resolver    |
+                             +--------------+
+                                    |
+                                    |
+                          Routing & Forwarding (2)
+                                    |
+                                    v
+                +----------------------------------------------+
+                |              Internet                        |
+                |                                              |
+                |                 +-----------+                |
+                |                 |  Router   |                |
+                |                 +-----------+                |
+                |                    |  |  |                   |
+                |                    |  |  |                   |
+                |                    |  |  |                   |
+                |                 +-----------+                |
+                |                 |  Router   |                |
+                |                 +-----------+                |
+                |                 |  Router   |                |
+                |                 +-----------+                |
+                +----------------------------------------------+
+                                    |
+                                    v
+                         +-------------------+
+                         |   Website Server  |
+                         |      (www.rpscloud.com)|
+                         +-------------------+
+                                    |
+                                    |
+                          Server Response (3)
+                                    |
+                                    v
+                             +--------------+
+                             |   Client     |
+                             |   Device     |
+                             +--------------+
+                                    |
+                                    |
+                             Content Rendering (4)
+Explanation:
+
+Accessing RPS Cloud Environment involves multiple steps within the network topology, which is essentially the arrangement of elements (nodes and links) in a communication network. Here's a simplified explanation of how accessing a website works within a typical network topology:
+
+Client Request: The process begins when a user (client) enters a website's URL into their web browser and initiates a request to access the website. The client's device, such as a computer, smartphone, or tablet, acts as the starting point in the network topology.
+
+DNS Resolution: The client's request includes the domain name example (www.rpscloud.com). Before the client can connect to the website's server, it needs to resolve the domain name to an IP address. The Domain Name System (DNS) server performs this translation by mapping the domain name to the corresponding IP address. This step may involve multiple DNS servers, starting from the client's local DNS resolver to authoritative DNS servers responsible for the domain.
+
+Routing: Once the client has obtained the IP address of the website's server, the next step is to determine the optimal path (route) to reach the server across the internet. This involves routing protocols and routers, which make decisions based on network topology, traffic conditions, and other factors. The client's request is forwarded through multiple network devices, such as routers and switches, as it traverses the internet.
+
+Server Response: After reaching the destination network, the client's request arrives at the server hosting the website. The server processes the request, retrieves the requested web page and associated resources (such as HTML, CSS, JavaScript, images, etc.), and generates a response.
+
+Data Transmission: The server's response, including the requested web page and resources, is transmitted back to the client over the network. This transmission occurs through a series of interconnected network devices, following the reverse path taken by the client's request.
+
+Content Rendering: Upon receiving the server's response, the client's web browser interprets the HTML, renders the web page, and displays it to the user. Additional resources, such as images and scripts, are loaded and integrated into the web page as necessary.
+
+Throughout this process, the network topology plays a crucial role in determining the path of communication between the client and the server. The topology includes various network elements, such as client devices, DNS servers, routers, switches, and the server hosting the website, interconnected through physical and logical links. Efficient routing, reliable data transmission, and proper handling of requests and responses are essential for seamless website access within the network topology.
+
+                   
+
+
